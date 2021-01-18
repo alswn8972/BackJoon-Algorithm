@@ -1,0 +1,32 @@
+import java.util.Scanner;
+public class Main {
+	public static double Combi(double n, double r) {
+		double a = 1, b = 1;
+		
+		for(double i = n; i > n-r ; i--) {
+			a *= i;
+		}
+		for(double i = 2; i <= r ; i++) {
+			b *= i;
+		}
+		return a/b;
+		
+	}
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int testcase = sc.nextInt();
+		double []result = new double[testcase];
+		
+		for(int i = 0; i < testcase; i++) {
+			double  n = sc.nextDouble();
+			double  m = sc.nextDouble();
+			result[i]=Combi(m, n);
+		}
+		for(int i = 0; i < testcase; i++) {
+			System.out.printf("%.0f",result[i]);
+			System.out.println();
+		}
+		
+	}
+}
+
