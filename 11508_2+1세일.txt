@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int N;
+		ArrayList<Integer> s = new ArrayList<>();
+		
+		N = sc.nextInt();
+		int result = 0;
+		for(int i = 0; i < N ; i++) {
+			s.add(sc.nextInt());
+			result += s.get(i);
+		}
+		Collections.sort(s, (o1, o2) -> {return o2 - o1;});
+		for(int i = 2; i < s.size(); i+=3)  	result -= s.get(i);
+		System.out.println(result);
+	}
+}
+
+
+
+
