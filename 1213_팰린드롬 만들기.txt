@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		
+		int[] alp = new int[28];
+		String str = new String();
+		str = sc.next();
+		String res = "";
+		
+		for(int i = 0; i < str.length(); i++) 	alp[str.charAt(i) - 65]++;
+		
+		int oddCnt = 0;
+		char oddChar = 'a';
+		
+		for(int i = 0; i < alp.length; i++) {
+			if(alp[i] == 0) 	continue;
+			
+			if(alp[i] % 2 == 1) {
+				oddCnt++;
+				oddChar = (char)(i + 65);
+			}
+		}
+		
+		if(oddCnt >= 2) {
+			System.out.println("I'm Sorry Hansoo");
+			return;
+		}
+		
+		StringBuilder temp = new StringBuilder();
+		String halfStr = "";
+		String reverseHalfStr = "";
+		
+		if(oddCnt == 0) {
+			for(int i = 0; i < alp.length; i++) {
+				if(alp[i] == 0)    continue;
+				
+				for(int j = 0; j < alp[i] / 2; j++) {
+					temp.append((char)(i + 65));
+				}
+			}
+			halfStr = temp.toString();
+			
+			reverseHalfStr = temp.reverse().toString();
+			res = halfStr + reverseHalfStr;
+		}
+		else {
+			for(int i = 0; i < alp.length; i++) {
+				if(alp[i] == 0)	continue;
+				
+				for(int j = 0; j < alp[i] / 2; j++) {
+					temp.append((char)(i + 65));
+				}
+			}
+			halfStr = temp.toString();
+			reverseHalfStr = temp.reverse().toString();
+			
+			res = halfStr + oddChar+"" + reverseHalfStr;
+		}
+		
+		System.out.println(res);		
+	}
+}
